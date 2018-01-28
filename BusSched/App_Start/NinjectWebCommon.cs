@@ -1,7 +1,10 @@
 ﻿using System;
+using System.Linq;
 using System.Web;
 using Microsoft.Web.Infrastructure.DynamicModuleHelper;
 using BusSched.App_Start;
+using BusSched.Services;
+using BusSched.Services.Services;
 using Ninject;
 using Ninject.Web.Common;
 using Ninject.Web.Common.WebHost;
@@ -39,6 +42,12 @@ namespace BusSched.App_Start
 
         private static void RegisterServices(IKernel kernel)
         {
+            kernel.Bind<IAppConfigService>().To<AppConfigService>();
+            kernel.Bind<IBusSchedService>().To<BusSchedService>()
+                .WithConstructorArgument("routeIds", Enumerable.Range(1, 3).ToList())
+                .WithConstructorArgument("interval", 15)
+                .WithConstructorArgument("stopTimeBetweenRouteStops", 2)
+                .WithConstructorArgument("routeTravelTime", 2);
         }
     }
 }

@@ -15,3 +15,14 @@ select,
 textarea {
     max-width: 280px;
 }
+
+@media (max-width: 767px) {
+    .start-button button {
+        width: 100%;
+    }
+
+    .route-stops {
+        font-size: 22px;
+        text-align: center;
+    }
+}

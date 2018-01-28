@@ -1,1 +1,25 @@
-﻿
+﻿@section scripts {
+    @Scripts.Render("~/bundles/moment")
+    <script src="/Scripts/app/app.js"></script>
+}
+
+<div ng-app="busSchedApp">
+    <div ng-controller="BusSchedCtrl as ctrl">
+        <div class="start-button">
+            <button type="button" ng-click="ctrl.toggle()" class="btn btn-lg" ng-class="{ 'btn-primary': !ctrl.started, 'btn-default': ctrl.started }">
+                {{ctrl.started ? 'Stop' : 'Start'}}
+            </button>
+        </div>
+
+        <div ng-repeat="stop in ctrl.nextStops" class="route-stops">
+            <h2>Stop {{stop.id}}</h2>
+            <div ng-repeat="routeStop in stop.routeStops">
+                Route {{routeStop.routeId}} in
+                <span ng-repeat="nextStop in routeStop.nextStops">
+                    <span ng-if="$index > 0"> and </span>
+                    {{nextStop}}
+                </span>
+            </div>
+        </div>
+    </div>
+</div>
