@@ -40,7 +40,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Helpers\DateTimeExtentions.cs" />
+    <Compile Include="Models\RouteStop.cs" />
+    <Compile Include="Models\Stop.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Services\BusSchedService.cs" />
+    <Compile Include="Services\IAppConfigService.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
